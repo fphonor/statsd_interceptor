@@ -1,0 +1,4 @@
+prefix:       release_6080
+hostname:     129.0.2.66
+port:         8125
+maxudpsize:   500

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10000">
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8">
+			<pattern>%date{ISO8601} [%thread] %-5level %logger{10}:%line - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/web/FLTM.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{ISO8601} [%thread] %-5level %logger{10}:%line - %msg%n</pattern>
+		</encoder>
+		<prudent>true</prudent>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="rollingAppender" />
+		<appender-ref ref="stdout" />
+	</root>
+	
+	<logger name="org">
+		<level value="ERROR" />
+	</logger>
+	<logger name="httpclient">
+		<level value="INFO" />
+	</logger>
+	<logger name="net.sf.ehcache">
+		<level value="ERROR" />
+	</logger>
+	
+	<logger name="com.g">
+		<level value="DEBUG" />
+	</logger>
+</configuration>
