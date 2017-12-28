@@ -1,4 +1,4 @@
-package com.fphonor.statsd;
+package io.github.fphonor.statsd;
 
 import java.io.FileReader;
 import java.util.Map;

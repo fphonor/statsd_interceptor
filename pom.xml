@@ -1,17 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.fphonor</groupId>
-    <artifactId>statsd-interceptor</artifactId>
-    <packaging>jar</packaging>
-    <version>1.0.1</version>
-    <name>Java Web Framework AOP Interceptors for StatsD</name>
-    <url>http://maven.apache.org</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
     </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.fphonor</groupId>
+    <artifactId>statsd-interceptor</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.1-SNAPSHOT</version>
+    <name>StatsD Interceptor</name>
+    <description>Java Web Framework AOP Interceptors for StatsD</description>
+    <url>https://github.com/fphonor/statsd_interceptor</url>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -20,7 +21,7 @@
         </license>
     </licenses>
     <scm>
-        <tag>master</tag>
+        <tag>v1.0.0</tag>
         <url>git@github.com:fphonor/statsd_interceptor.git</url>
         <connection>scm:git:git@github.com:fphonor/statsd_interceptor.git</connection>
         <developerConnection>scm:git:git@github.com:fphonor/statsd_interceptor.git</developerConnection>
@@ -121,6 +122,30 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <releaseProfiles>releases</releaseProfiles>
+                </configuration>
             </plugin>
         </plugins>
         <finalName>statsd-interceptor</finalName>

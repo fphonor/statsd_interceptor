@@ -1,4 +1,4 @@
-package com.fphonor.jfinal.interceptor;
+package io.github.fphonor.jfinal.interceptor;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
-import static com.fphonor.jfinal.interceptor.StatsInterceptor.InvocationConsumer;
+import io.github.fphonor.jfinal.interceptor.InvocationConsumer;
 
 public class MonitorByRegex implements Interceptor {
     private Pattern pattern;

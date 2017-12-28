@@ -1,10 +1,10 @@
-package com.fphonor.jfinal.interceptor;
+package io.github.fphonor.jfinal.interceptor;
 
 import com.jfinal.aop.Invocation;
+import io.github.fphonor.statsd.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fphonor.statsd.Client;
 import com.timgroup.statsd.StatsDClient;
 
 import java.util.HashMap;
@@ -36,11 +36,7 @@ public abstract class StatsBase implements StatsInterceptor {
 
     @Override
     public void intercept(Invocation invocation) {
-        if (isMonitored(invocation)) {
-            enhance(inv -> inv.invoke(), metricName, sampleRate).accept(invocation);
-        } else {
-            invocation.invoke();
-        }
+        enhance(inv -> inv.invoke(), metricName, sampleRate).accept(invocation);
     }
 
     protected void init(Map<String, Object> me) {}
